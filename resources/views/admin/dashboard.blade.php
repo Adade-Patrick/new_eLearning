@@ -8,21 +8,7 @@
 
 <div class="p-4 sm:ml-64 bg-no-repeat bg-cover  bg-white bg-blend-multiply">
     <main class="mt-20 mb-20">
-
-            <!--Div présentation-->
-            {{-- <div class="cursor-pointer group rounded-md ont-bold shadow-2xl hover:scale-110 transition active:scale-90 max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center border border-blue-600 dark:border-gray-700 dark:bg-white relative py-10 px-4">
-                <div class="p-2 text-center md:text-left">
-                    <h2 class="mb-2 text-3xl font-bold tracking-tight text-blue-600 dark:text-white">Bienvenue !</h2>
-                    <p class="mb-3 font-normal text-blue-600 dark:text-gray-400">Prêt à commencer votre journée !</p>
-                </div>
-
-                <div class="flex justify-center md:absolute md:right-5 mt-4 md:mt-4">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="w-auto max-w-[16rem] h-40 rounded-full">
-                </div>
-            </div> --}}
-
-
-            <div class="relative z-10 flex justify-center items-center px-4">
+            <div class="relative z-10 flex justify-center items-center px-6">
                  <div class="max-w-3xl w-full rounded-3xl border border-white/20 backdrop-blur-xl bg-white/10 shadow-2xl transition hover:scale-105 duration-300 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between animate-fade-in-up group">
 
                     <div class="text-center md:text-left">
@@ -38,11 +24,164 @@
             </div>
 
 
+    <div id="main-content" class="transition-all duration-300 ml-60">
+                <div class="space-y-6 p-14 ">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                        <p class="mt-1 text-sm text-gray-600">
+                            Overview of your course management system
+                        </p>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Total Students</p>
+                                    {{-- <p class="text-2xl font-bold mt-1">{{ $totalStudents }}</p> --}}
+                                </div>
+                                <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Similar cards for other stats -->
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-lg font-semibold mb-4">Top Courses</h2>
+                            <canvas id="topCoursesChart"></canvas>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-lg font-semibold mb-4">Monthly Enrollments</h2>
+                            <canvas id="enrollmentsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Students -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold">Recently Enrolled Students</h2>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Enrolled</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Courses</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    {{-- @foreach($recentStudents as $student) --}}
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="h-10 w-10 rounded-full bg-indigo-100">
+                                                    {{-- @if($student->avatar) --}}
+                                                        {{-- <img src="{{ $student->avatar }}" alt="{{ $student->name }}" class="h-10 w-10 rounded-full"> --}}
+                                                    {{-- @else --}}
+                                                        <span class="h-10 w-10 rounded-full flex items-center justify-center text-indigo-600">
+                                                            {{-- {{ substr($student->name, 0, 1) }} --}}
+                                                        </span>
+                                                    {{-- @endif --}}
+                                                </div>
+                                                <div class="ml-4">
+                                                    {{-- <div class="text-sm font-medium text-gray-900">{{ $student->name }}</div> --}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{-- {{ $student->email }} --}}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{-- {{ $student->created_at->format('M d, Y') }} --}}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{-- {{ $student->courses->count() }} --}}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            {{-- <span class="px-2 py-1 text-xs rounded-full {{ $student->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}"> --}}
+                                                {{-- {{ ucfirst($student->status) }} --}}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {{-- @endforeach --}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+                @push('scripts')
+                {{-- <script>
+                    // Initialize charts using Chart.js
+                    const topCoursesChart = new Chart(
+                        document.getElementById('topCoursesChart'),
+                        {
+                            type: 'bar',
+                            data: {
+                                // labels: {!! json_encode($topCourses->pluck('title')) !!},
+                                datasets: [{
+                                    label: 'Enrollments',
+                                    data: {!! json_encode($topCourses->pluck('enrollment_count')) !!},
+                                    backgroundColor: '#4F46E5',
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        }
+                    );
+
+                    const enrollmentsChart = new Chart(
+                        document.getElementById('enrollmentsChart'),
+                        {
+                            type: 'line',
+                            data: {
+                                labels: {!! json_encode($monthlyEnrollments->pluck('month')) !!},
+                                datasets: [{
+                                    label: 'Enrollments',
+                                    data: {!! json_encode($monthlyEnrollments->pluck('count')) !!},
+                                    borderColor: '#4F46E5',
+                                    tension: 0.1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        }
+                    );
+                </script> --}}
+                @endpush
 
 
 
 
-            <!--Div  classe-->
+
+
+                <!--Div  classe-->
     <div class="mt-8">
         {{-- <h3 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Cycles</h3>   --}}
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">

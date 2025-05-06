@@ -10,7 +10,7 @@
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="test" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                     <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
                     </svg>
@@ -62,16 +62,16 @@
                         </thead>
                         <tbody id="tableBody">
                         @if($annees->isEmpty())
-                        <tr>
-                            <td colspan="3">Aucune année scolaire trouvée</td>
-                        </tr>
+                            <tr>
+                                <td colspan="3">Aucune année scolaire trouvée</td>
+                            </tr>
                         @else
                         @foreach($annees as $annee)
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700          border-gray-200">
-                        <td class="px-6 py-4">{{ $annee->idAnnee_scolaires }}</td>
-                        <td class="px-6 py-4">{{ $annee->libelle }}</td>
+                        <td class="px-6 py-4">{{ $annee->id }}</td>
+                        <td class="px-6 py-4">{{ $annee->libelle_A }}</td>
                         <td class="px-6 py-4">
-                            <form action="{{ route('annees.destroy', $annee->idAnnee_scolaires) }}" method="POST" class="inline-block">
+                            <form action="{{ route('annee.destroy', $annee->id) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')
 
@@ -124,11 +124,11 @@
         <div id="formModal" class="fixed inset-0 flex items-center justify-center invisible">
             <div class="bg-white p-5 rounded shadow-lg w-96">
                 <h2 class="text-lg font-bold mb-4 text-center">Ajouter une année scolaire</h2>
-                <form id="anneeForm" action="{{ route('annees.store') }}" method="POST">
+                <form id="anneeForm" action="{{ route('annee_scolaire.store') }}" method="POST">
                     @csrf
                     <div class="mb-4">
                         <label for="libelle" class="block text-sm font-medium text-gray-700">Libelle</label>
-                        <input type="text" id="libelle" name="libelle" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required min="2000" max="2099">
+                        <input type="text" id="libelle_A" name="libelle_A" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required min="2000" max="2099">
                     </div>
                     <div class="flex justify-center space-x-4">
                         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Enregistrer</button>

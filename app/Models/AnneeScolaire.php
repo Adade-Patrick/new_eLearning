@@ -9,7 +9,7 @@ class AnneeScolaire extends Model
 {
     use HasFactory;
     protected $table = 'annee_scolaires';
-    // protected $primaryKey = 'idAnnee_scolaires';
+    // protected $primaryKey = 'annee_scolaires_id';
     protected $primaryKey = 'id';
 
 

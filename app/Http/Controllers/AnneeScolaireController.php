@@ -17,7 +17,7 @@ class AnneeScolaireController extends Controller
         // Débogage
         \Log::info('Nombre d\'années : ' . $annees->count());
 
-        return view('annee_scolaire.anneeScolaire', ['annees' => $annees]);
+        return view('annee_scolaire.index', compact('annees'));
     }
 
     /**
@@ -35,30 +35,39 @@ class AnneeScolaireController extends Controller
     {
         $validatedData = $request->validate([
             // 'libelle' => 'required|unique:annee_scolaires,libelle',
-            'libelle' => [
+            'libelle_A' => [
             'required',
             'regex:/^(20\d{2})-(20\d{2})$/', // Vérifie le format "YYYY-YYYY"
             function ($attribute, $value, $fail) {
-                [$start, $end] = explode('-', $value);
+                // 1. Vérifier le format et extraire
+                if (! preg_match('/^(20\d{2})-(20\d{2})$/', $value, $matches)) {
+                    $fail("Le format doit être “YYYY-YYYY”.");
+                    return;
+                }
+                [, $start, $end] = $matches;
+
+                // 2. Vérifier l’ordre
                 if ($start >= $end) {
                     $fail("L'année de début doit être inférieure à l'année de fin.");
+                }
             }
-        }
+
     ],
         ],
             [
-                'libelle.required' => 'Le libellé est obligatoire.',
-                'libelle.unique' => 'Ce libellé est déjà utilisé.',
+                'libelle_A.required' => 'Le libellé est obligatoire.',
+                'libelle_A.unique' => 'Ce libellé est déjà utilisé.',
             ]);
             AnneeScolaire::create($validatedData);
-            return redirect()->route('annees.index')->with('success', 'Année scolaire ajoutée avec succès');
+            return redirect()->route('annee_scolaire.index')->with('success', 'Année scolaire ajoutée avec succès');
+
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(AnneeScolaire $idAnnee_scolaires)
+    public function show(AnneeScolaire $annee_scolaires_id)
     {
         //
     }
@@ -66,7 +75,7 @@ class AnneeScolaireController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AnneeScolaire $idAnnee_scolaires)
+    public function edit(AnneeScolaire $annee_scolaires_id)
     {
         //
     }
@@ -74,7 +83,7 @@ class AnneeScolaireController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AnneeScolaire $idAnnee_scolaires)
+    public function update(Request $request, AnneeScolaire $annee_scolaires_id)
     {
         //
     }
@@ -82,11 +91,11 @@ class AnneeScolaireController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($idAnnee_scolaires)
+    public function destroy($annee_scolaires_id)
     {
-        $annee = AnneeScolaire::findOrFail($idAnnee_scolaires);
+        $annee = AnneeScolaire::findOrFail($annee_scolaires_id);
         $annee->delete();
 
-        return redirect()->route('annees.index')->with('success', 'Année scolaire supprimée avec succès');
+        return redirect()->route('annee_scolaire.index')->with('success', 'Année scolaire supprimée avec succès');
     }
 }

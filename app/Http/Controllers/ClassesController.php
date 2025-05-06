@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classe;
 use Illuminate\Http\Request;
-use App\Http\Requests\Classe\ClasseStoreRequest;
-use Exception;
+
 class ClassesController extends Controller
 {
     /**
@@ -14,8 +13,8 @@ class ClassesController extends Controller
     public function index()
     {
         //
-        $classes = classe::all();
-        return view('test.classe', ['classes' => $classes]);
+        $classes = Classe::all();
+        return view('classe.index', ['classes' => $classes]);
     }
 
     /**
@@ -29,18 +28,18 @@ class ClassesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-        public function store(ClasseStoreRequest $request)
+        public function store(Request $request)
     {
         // Validation des données
         $validatedData = $request->validate([
-            'libelle' => 'required|unique:classes,libelle',
+            'libelle_Cl' => 'required|unique:classes,libelle_Cl',
         ]);
         // Création de la classe
         try{
             Classe::create($validatedData);
 
             // Redirection avec message de succès
-            return redirect()->route('classes.index')->with('success', 'Classe ajoutée avec succès');
+            return redirect()->route('classe.index')->with('success', 'Classe ajoutée avec succès');
 
         }catch(Exception $e){
             return redirect()->back()->withErrors([
@@ -82,6 +81,8 @@ class ClassesController extends Controller
         $classe = Classe::findOrFail($id);
         $classe->delete();
 
-        return redirect()->route('classes.index')->with('success', 'Classe supprimée avec succès.');
+        return redirect()->route('classe.index')->with('success', 'Classe supprimée avec succès.');
     }
 }
+
+

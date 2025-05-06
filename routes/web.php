@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ElevesController;
+use App\Http\Controllers\EleveController;
+use App\Http\Controllers\ProfController;
 use App\Http\Controllers\{
     PrimaireController,
     AnneeScolaireController,
@@ -36,6 +37,14 @@ require __DIR__.'/admin_route.php';
 //eleves require
 require __DIR__.'/eleves_route.php';
 
+require __DIR__.'/annee_scolaire_route.php';
+
+require __DIR__.'/classe_route.php';
+
+require __DIR__.'/eleves_route.php';
+
+require __DIR__.'/prof_route.php';
+
 
   // Pages de cycles et de cours
   Route::prefix('cycle')->group(function () {
@@ -51,8 +60,8 @@ require __DIR__.'/eleves_route.php';
     Route::view('/table_list_cm1', 'test.table_list_cm1')->name('table_list_cm1');
     Route::view('/table_list_cm2', 'test.table_list_cm2')->name('table_list_cm2');
 
-    //Route eleve
-    Route::view('/add_eleve', 'traitements.eleve.add_eleve')->name('add_eleve');
+
+
 
     // Table lists collège
     Route::view('/table_list_6eme', 'test.table_list_6eme')->name('table_list_6eme');
@@ -63,15 +72,9 @@ require __DIR__.'/eleves_route.php';
 
 Route::view('/cours', 'test.cours')->name('cours');
 
- // Année scolaire
- Route::get('/anneeScolaire', [AnneeScolaireController::class, 'index'])->name('annees.index');
- Route::post('/ajouter-annee', [AnneeScolaireController::class, 'store'])->name('annees.store');
- Route::delete('/annees-scolaires/{id}', [AnneeScolaireController::class, 'destroy'])->name('annees.destroy');
 
-  // Classes
-  Route::get('/classe', [ClassesController::class, 'index'])->name('classes.index');
-  Route::post('/ajoute-classe', [ClassesController::class, 'store'])->name('classes.store');
-  Route::delete('/classe/{id}', [ClassesController::class, 'destroy'])->name('classes.destroy');
+
+
 
       //  Zone de test
       Route::view('/admin/dashboard', 'admin.dashboard')->name('dashboard');
