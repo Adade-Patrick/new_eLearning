@@ -7,7 +7,7 @@
             <h4>Ajouter un nouvel élève</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('eleve.store') }}" method="POST">
+            <form action="{{ route('traitements.eleve.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="nom" class="form-label">Nom</label>
@@ -22,7 +22,7 @@
                     <input type="text" name="classe" class="form-control" required>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('eleve.index') }}" class="btn btn-secondary">Annuler</a>
+                    <a href="{{ route('traitements.eleve.index') }}" class="btn btn-secondary">Annuler</a>
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                 </div>
             </form>

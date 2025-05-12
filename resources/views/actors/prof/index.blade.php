@@ -6,7 +6,7 @@
 @include('partials.sidebar')
 
 <div class="p-3 sm:ml-64  bg-no-repeat bg-cover bg-white bg-blend-multiply">
-    <main class="mt-14 mb-0 ">
+    <main class="mt-24 mb-0 ">
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
@@ -62,7 +62,7 @@
                 @endif
 
                 <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-black uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">ID</th>
                             <th scope="col" class="px-6 py-3">Nom</th>
@@ -132,8 +132,8 @@
         </div>
 
         <!-- Formulaire modal -->
-        <div id="formModal" class="fixed inset-0 flex items-center justify-center invisible">
-            <div class="bg-white p-5 rounded shadow-lg w-96">
+        <div id="formModal" class="fixed inset-0 z-50 flex items-center justify-center invisible bg-black bg-opacity-50 p-4">
+            <div class="bg-white mt-2 p-5 rounded shadow-lg w-96">
                 <h2 class="text-lg font-bold mb-4 text-center">Ajouter un Professeur</h2>
                 <form action="#" method="POST">
                     @csrf

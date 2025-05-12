@@ -9,11 +9,19 @@ class Cycle extends Model
 {
     use HasFactory;
 
-    protected $table = 'cycles';
+    // Nom explicite de la table (optionnel ici car le nom suit la convention Laravel pour les modèles au singulier)
+    protected $table = 'cycle';
 
-    // protected $primaryKey = 'idCycles';
-
+    // Colonnes pouvant être assignées en masse
     protected $fillable = [
         'libelle_C',
     ];
+
+    /**
+     * Exemple de relation : un cycle peut avoir plusieurs classes (si une telle relation existe)
+     */
+    public function classes()
+    {
+        return $this->hasMany(Classe::class, 'cycle_id');
+    }
 }

@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matiere', function (Blueprint $table) {
+        Schema::create('eleves', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle_M');
+             $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('info_perso_id');
             $table->unsignedBigInteger('classes_id');
-            $table->unsignedBigInteger('cycles_id');
+            $table->unsignedBigInteger('cycle_id');
             $table->timestamps();
 
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('info_perso_id')->references('id')->on('info_perso')->onDelete('cascade');
             $table->foreign('classes_id')->references('id')->on('classes')->onDelete('cascade');
-            $table->foreign('cycles_id')->references('id')->on('cycles')->onDelete('cascade');
+            $table->foreign('cycle_id')->references('id')->on('cycle')->onDelete('cascade');
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('matiere');
+        Schema::dropIfExists('eleves');
     }
 };

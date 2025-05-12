@@ -42,7 +42,7 @@ class EleveController extends Controller
         ]);
 
         Eleve::create($validated);
-        return redirect()->route('eleves.index')->with('success', 'Élève créé avec succès.');
+        return redirect()->route('traitements.eleve.index')->with('success', 'Élève créé avec succès.');
     }
 
     /** Display the specified resource. */
@@ -74,13 +74,13 @@ class EleveController extends Controller
         ]);
 
         $eleve->update($validated);
-        return redirect()->route('eleves.index')->with('success', 'Élève mis à jour avec succès.');
+        return redirect()->route('traitements.eleve.index')->with('success', 'Élève mis à jour avec succès.');
     }
 
     /** Remove the specified resource from storage. */
     public function destroy(Eleve $eleve)
     {
         $eleve->delete();
-        return redirect()->route('eleves.index')->with('success', 'Élève supprimé avec succès.');
+        return redirect()->route('traitements.eleve.index')->with('success', 'Élève supprimé avec succès.');
     }
 }

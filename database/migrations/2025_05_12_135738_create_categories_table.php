@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pdf', function (Blueprint $table) {
-            $table->id(); // INT AUTO_INCREMENT PRIMARY KEY
-            $table->string('url');
-            $table->unsignedBigInteger('id_cours');
-
-            $table->foreign('id_cours')->references('id')->on('cours')->onDelete('cascade');
-
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('libelle_cat');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pdf');
+        Schema::dropIfExists('categories');
     }
 };

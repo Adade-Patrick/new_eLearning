@@ -9,18 +9,28 @@ class Prof extends Model
 {
     use HasFactory;
 
-    protected $table = 'profs';
-    protected $primaryKey = 'idProfs';
+    // Laravel attendrait une table "profs", donc on précise ici le nom réel
+    protected $table = 'prof';
 
     protected $fillable = [
-        'adresse',
-        'telephone',
+        'users_id',
+        'info_perso_id',
         'specialite',
-        'idUsers',
     ];
 
+    /**
+     * Relation vers l'utilisateur associé
+     */
     public function user()
     {
-        return $this->belongsTo(User::class, 'idUsers', 'idUsers');
+        return $this->belongsTo(User::class, 'users_id');
+    }
+
+    /**
+     * Relation vers les informations personnelles
+     */
+    public function infoPerso()
+    {
+        return $this->belongsTo(InfoPerso::class, 'info_perso_id');
     }
 }

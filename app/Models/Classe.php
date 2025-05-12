@@ -2,23 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Classe extends Model
 {
-    //
     use HasFactory;
-    protected $table = 'classes';
-    protected $primaryKey = 'id';
 
+    // Déclare le nom de la table si elle ne suit pas la convention Laravel (ici, c'est "classes")
+    protected $table = 'classes';
+
+    // Les attributs qui peuvent être massivement assignés
     protected $fillable = [
-        'libelle_Cl'
+        'libelle_Cl',
     ];
 
-    // Mutateur pour forcer le nom en majuscules
-    public function setNomAttribute($value)
+    /**
+     * Relation avec les élèves (un prof peut avoir plusieurs élèves)
+     */
+    public function eleves()
     {
-        $this->attributes['libelle_Cl'] = strtoupper($value);
+        return $this->hasMany(Eleve::class, 'classe_id');
     }
 }

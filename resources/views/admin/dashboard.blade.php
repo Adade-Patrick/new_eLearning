@@ -5,279 +5,185 @@
 @include('partials.navbar')
 @include('partials.sidebar')
 
-
 <div class="p-4 sm:ml-64 bg-no-repeat bg-cover  bg-white bg-blend-multiply">
     <main class="mt-20 mb-20">
-            <div class="relative z-10 flex justify-center items-center px-6">
-                 <div class="max-w-3xl w-full rounded-3xl border border-white/20 backdrop-blur-xl bg-white/10 shadow-2xl transition hover:scale-105 duration-300 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between animate-fade-in-up group">
-
-                    <div class="text-center md:text-left">
-                        <h2 class="text-4xl font-extrabold text-white mb-2 animate-text-glow">Bienvenue sur le tableau de bord !</h2>
-                        <p class="text-black text-lg font-light">Gérer efficacement vos utilisateurs, contenus et paramètres</p>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Welcome Banner -->
+            <div class="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl shadow-lg mb-6">
+                <div class="absolute right-0 top-0 -mt-10 -mr-10">
+                    <div class="text-white/10">
+                        <svg class="w-48 h-48" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4 13H3C2.44772 13 2 12.5523 2 12C2 11.4477 2.44772 11 3 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13Z"></path>
+                        </svg>
                     </div>
-
-                    <div class="mt-6 md:mt-0 md:ml-6">
-                        <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg group-hover:rotate-6 transition duration-500 ease-in-out">
-                    </div>
-
+                </div>
+                <div class="relative p-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">Bienvenue !</h2>
+                    <p class="text-blue-100">Voici un aperçu de votre tableau de bord</p>
                 </div>
             </div>
 
-
-    <div id="main-content" class="transition-all duration-300 ml-60">
-                <div class="space-y-6 p-14 ">
-                    <div>
-                        <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
-                        <p class="mt-1 text-sm text-gray-600">
-                            Overview of your course management system
-                        </p>
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <!-- Total Students -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-blue-50 dark:bg-blue-500/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 22H4V20C4 17.2386 6.23858 15 9 15H15C17.7614 15 20 17.2386 20 20V22Z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full">+12%</span>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">2,450</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Total Élèves</p>
+                </div>
 
-                    <!-- Stats Cards -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-sm font-medium text-gray-500">Total Students</p>
-                                    {{-- <p class="text-2xl font-bold mt-1">{{ $totalStudents }}</p> --}}
+                <!-- Total Teachers -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-purple-50 dark:bg-purple-500/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-purple-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11 14.0619V20H13V14.0619C16.9463 14.554 20 17.9204 20 22H4C4 17.9204 7.05369 14.554 11 14.0619Z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full">+4%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">145</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Total Professeurs</p>
+                </div>
+
+                <!-- Total Classes -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-orange-50 dark:bg-orange-500/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-orange-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 21V23.5L10 21.5L7 23.5V21H6.5C4.567 21 3 19.433 3 17.5V5C3 3.34315 4.34315 2 6 2H20C20.5523 2 21 2.44772 21 3V20C21 20.5523 20.5523 21 20 21H13Z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full">+8%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">32</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Total Classes</p>
+                </div>
+
+                <!-- Success Rate -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-green-50 dark:bg-green-500/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 3V19H21V21H3V3H5ZM19.9393 5.93934L22.0607 8.06066L16 14.1213L13 11.121L9.06066 15.0607L6.93934 12.9393L13 6.87868L16 9.879L19.9393 5.93934Z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-medium text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full">+2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">92%</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Taux de Réussite</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Recent Activities -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Activités Récentes</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            @foreach(range(1, 4) as $i)
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="https://ui-avatars.com/api/?name=User+{{ $i }}" alt="User">
                                 </div>
-                                <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                                    </svg>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Nouvel élève inscrit</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Il y a {{ $i * 5 }} minutes</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Similar cards for other stats -->
-                    </div>
-
-                    <!-- Charts -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <h2 class="text-lg font-semibold mb-4">Top Courses</h2>
-                            <canvas id="topCoursesChart"></canvas>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <h2 class="text-lg font-semibold mb-4">Monthly Enrollments</h2>
-                            <canvas id="enrollmentsChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Recent Students -->
-                    <div class="bg-white rounded-lg shadow-md">
-                        <div class="p-6 border-b border-gray-200">
-                            <h2 class="text-lg font-semibold">Recently Enrolled Students</h2>
-                        </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="bg-gray-50">
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Enrolled</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Courses</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200">
-                                    {{-- @foreach($recentStudents as $student) --}}
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="h-10 w-10 rounded-full bg-indigo-100">
-                                                    {{-- @if($student->avatar) --}}
-                                                        {{-- <img src="{{ $student->avatar }}" alt="{{ $student->name }}" class="h-10 w-10 rounded-full"> --}}
-                                                    {{-- @else --}}
-                                                        <span class="h-10 w-10 rounded-full flex items-center justify-center text-indigo-600">
-                                                            {{-- {{ substr($student->name, 0, 1) }} --}}
-                                                        </span>
-                                                    {{-- @endif --}}
-                                                </div>
-                                                <div class="ml-4">
-                                                    {{-- <div class="text-sm font-medium text-gray-900">{{ $student->name }}</div> --}}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{-- {{ $student->email }} --}}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{-- {{ $student->created_at->format('M d, Y') }} --}}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{-- {{ $student->courses->count() }} --}}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            {{-- <span class="px-2 py-1 text-xs rounded-full {{ $student->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}"> --}}
-                                                {{-- {{ ucfirst($student->status) }} --}}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    {{-- @endforeach --}}
-                                </tbody>
-                            </table>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-    </div>
 
-                @push('scripts')
-                {{-- <script>
-                    // Initialize charts using Chart.js
-                    const topCoursesChart = new Chart(
-                        document.getElementById('topCoursesChart'),
-                        {
-                            type: 'bar',
-                            data: {
-                                // labels: {!! json_encode($topCourses->pluck('title')) !!},
-                                datasets: [{
-                                    label: 'Enrollments',
-                                    data: {!! json_encode($topCourses->pluck('enrollment_count')) !!},
-                                    backgroundColor: '#4F46E5',
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        }
-                    );
+                <!-- Quick Actions -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Actions Rapides</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                <div class="flex-shrink-0">
+                                    <div class="p-2 bg-blue-500 rounded-lg">
+                                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M20 22H4V20C4 17.2386 6.23858 15 9 15H15C17.7614 15 20 17.2386 20 20V22Z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Ajouter un élève</p>
+                                </div>
+                            </a>
 
-                    const enrollmentsChart = new Chart(
-                        document.getElementById('enrollmentsChart'),
-                        {
-                            type: 'line',
-                            data: {
-                                labels: {!! json_encode($monthlyEnrollments->pluck('month')) !!},
-                                datasets: [{
-                                    label: 'Enrollments',
-                                    data: {!! json_encode($monthlyEnrollments->pluck('count')) !!},
-                                    borderColor: '#4F46E5',
-                                    tension: 0.1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        }
-                    );
-                </script> --}}
-                @endpush
+                            <a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                <div class="flex-shrink-0">
+                                    <div class="p-2 bg-purple-500 rounded-lg">
+                                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M11 14.0619V20H13V14.0619C16.9463 14.554 20 17.9204 20 22H4C4 17.9204 7.05369 14.554 11 14.0619Z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Ajouter un prof</p>
+                                </div>
+                            </a>
 
+                            <a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                <div class="flex-shrink-0">
+                                    <div class="p-2 bg-yellow-300 rounded-lg">
+                                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M13 21V23.5L10 21.5L7 23.5V21H6.5C4.567 21 3 19.433 3 17.5V5C3 3.34315 4.34315 2 6 2H20C20.5523 2 21 2.44772 21 3V20C21 20.5523 20.5523 21 20 21H13Z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Créer un cours</p>
+                                </div>
+                            </a>
 
+                            <a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                <div class="flex-shrink-0">
+                                    <div class="p-2 bg-orange-500 rounded-lg">
+                                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M13 21V23.5L10 21.5L7 23.5V21H6.5C4.567 21 3 19.433 3 17.5V5C3 3.34315 4.34315 2 6 2H20C20.5523 2 21 2.44772 21 3V20C21 20.5523 20.5523 21 20 21H13Z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Créer un cours</p>
+                                </div>
+                            </a>
 
-
-
-
-                <!--Div  classe-->
-    <div class="mt-8">
-        {{-- <h3 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Cycles</h3>   --}}
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <a href="{{ route('cycle_primaire')}}">
-                    <h4 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Primaire</h4>
-                    <img class="h-60 max-w-sm w-full rounded-lg" src="{{ asset('images/cycle/primaire.jpg') }}" alt="">
-                </a>
-
-                <a href="{{ route('cycle_college')}}">
-                    <h4 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Collège</h4>
-                    <img class="h-60 max-w-sm w-full rounded-lg" src="{{ asset('images/cycle/college.jpg') }}" alt="">
-                </a>
-
-                <a href="{{ route('cycle_lycee')}}">
-                    <h4 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Lycée</h4>
-                    <img class="h-60 max-w-sm w-full rounded-lg" src="{{ asset('images/cycle/lycee.jpg') }}" alt="">
-                </a>
-
-
-        </div>
-    </div>
-
-
-            <!--Div liste Enseignant-->
-            <div class="mt-10">
-                <h3 class="mb-2 text-3xl text-center font-bold tracking-tight text-blue-600 dark:text-white">Enseignants</h3>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-black uppercase bg-blue-600 dark:bg-black dark:text-black">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Nom
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Prenom
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Classes affectées
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 text-black">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    A
-                                </th>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    B
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    C
-                                </td>
-
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-                    <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">1000</span></span>
-                        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                            </li>
-                            <li>
-                                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                            </li>
-                            <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                            <a href="#" class="flex items-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                <div class="flex-shrink-0">
+                                    <div class="p-2 bg-green-500 rounded-lg">
+                                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M6 4V8H18V4H20.0066C20.5552 4 21 4.44495 21 4.9934V21.0066C21 21.5552 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5551 3 21.0066V4.9934C3 4.44476 3.44495 4 3.9934 4H6Z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Noter un élève</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </main>
-
+</div>
 
 @endsection

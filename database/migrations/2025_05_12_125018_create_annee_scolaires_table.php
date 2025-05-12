@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inscriptions', function (Blueprint $table) {
-            $table->id(); // INT AUTO_INCREMENT PRIMARY KEY
-            $table->date('dateInscription');
-            $table->unsignedBigInteger('id_eleves');
-
-            $table->foreign('id_eleves')->references('id')->on('eleves')->onDelete('cascade');
-
+        Schema::create('annee_scolaires', function (Blueprint $table) {
+            $table->id();
+            $table->string('libelle_A');
             $table->timestamps();
-
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inscriptions');
+        Schema::dropIfExists('annee_scolaires');
     }
 };

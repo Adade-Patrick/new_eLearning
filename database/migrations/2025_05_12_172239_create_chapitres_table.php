@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profs', function (Blueprint $table) {
+        Schema::create('chapitres', function (Blueprint $table) {
             $table->id();
-            $table->string('adresse');
-            $table->string('telephone');
-            $table->string('specialite');
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('titre');
+            $table->string('description');
+            $table->unsignedBigInteger('cours_id');
+            $table->time('duree');
+            $table->string('pdfUrl');
             $table->timestamps();
+
+            $table->foreign('cours_id')->references('id')->on('cours')->onDelete('cascade');
         });
     }
 
@@ -27,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profs');
+        Schema::dropIfExists('chapitres');
     }
 };
+    

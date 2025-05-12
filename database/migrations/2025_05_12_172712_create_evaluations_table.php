@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('annee_scolaires', function (Blueprint $table) {
+        Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle_A')->unique();
+            $table->date('date_evaluation');
+            $table->unsignedBigInteger('chapitre_id');
             $table->timestamps();
+
+            $table->foreign('chapitre_id')->references('id')->on('chapitres')->onDelete('cascade');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('annee_scolaires');
+        Schema::dropIfExists('evaluations');
     }
 };

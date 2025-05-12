@@ -6,7 +6,7 @@
 @include('partials.sidebar')
 
 <div class="p-3 sm:ml-64  bg-no-repeat bg-cover bg-white bg-blend-multiply">
-    <main class="mt-14 mb-0 ">
+    <main class="mt-24 mb-0 ">
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
@@ -63,7 +63,7 @@
                 @endif
                 <!--Tableau-->
                 <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-black uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-white uppercase bg-blue-500 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Id</th>
                                 <th scope="col" class="px-6 py-3">Libelle</th>

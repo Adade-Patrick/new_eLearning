@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('admin', function (Blueprint $table) {
             $table->id();
-            $table->string('adresse');
-            $table->string('telephone');
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('info_perso_id');
             $table->timestamps();
+
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('info_perso_id')->references('id')->on('info_perso')->onDelete('cascade');
         });
-
-
     }
 
     /**
